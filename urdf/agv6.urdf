@@ -531,4 +531,194 @@
     <axis
       xyz="0 0 0" />
   </joint>
+<!-- them plugin gps -->
+        <gazebo reference="gps_link">
+            <material>Gazebo/Orange</material>
+            <gravity>true</gravity>
+        </gazebo>
+        
+<gazebo>
+    <plugin name="gps_plugin" filename="libhector_gazebo_ros_gps.so">
+      <updateRate>10.0</updateRate>           <!-- Update frequency in Hz -->
+      <bodyName>base_link</bodyName>         <!-- Link to attach the GPS sensor -->
+      <topicName>/gps/fix</topicName>        <!-- ROS topic for GPS data -->
+      <velocityTopicName>/gps/fix_velocity</velocityTopicName> <!-- ROS topic for velocity -->
+      <referenceLatitude>40.7128</referenceLatitude>  <!-- Reference latitude (e.g., New York) -->
+      <referenceLongitude>-74.0060</referenceLongitude> <!-- Reference longitude -->
+      <referenceAltitude>0.0</referenceAltitude>     <!-- Reference altitude in meters -->
+      <drift>0.001 0.001 0.001</drift>              <!-- Position drift (x, y, z) -->
+      <gaussianNoise>0.05 0.05 0.05</gaussianNoise>  <!-- Gaussian noise for position -->
+    </plugin>
+  </gazebo>
+
+    <!-- Add Gazebo plugin for Camera -->
+    <gazebo reference="camera">
+        <sensor type="camera" name="camera">
+            <!-- <pose>0.015 0 0 0 -${pi/2} 0</pose> -->
+            <update_rate>30.0</update_rate>
+            <camera name="head">
+                <horizontal_fov>1.3962634</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <robotNamespace>agv6</robotNamespace>
+                <cameraName>camera</cameraName>
+                <imageTopicName>image_raw</imageTopicName>
+                <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+                <frameName>camera</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+    <!-- Add Gazebo plugin for Lidar -->
+    <gazebo reference="Lidar">
+        <sensor name="laser" type="ray">
+            <pose>0 0 0 1.5708 0 0</pose>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <!-- The URG-04LX-UG01 has 683 steps with 0.35139 Degree resolution -->
+                        <resolution>1</resolution>
+                        <max_angle>2.0944</max_angle> <!-- 120 Degree -->
+                        <min_angle>-2.0944</min_angle> <!-- -120 Degree -->
+                        <samples>683</samples>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.08</min>
+                    <max>5</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <robotNamespace>agv6</robotNamespace>
+                <topicName>Lidar/scan</topicName>
+                <frameName>Lidar</frameName>
+            </plugin>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+
+  <!-- Gazebo Transmissions for Wheels -->
+  <transmission name="wheel_left_front_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Wheel_left_front_jt">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_left_front_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="wheel_right_front_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Wheel_right_front_jt">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_right_front_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="wheel_left_rear_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Wheel_left_rear_jt">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_left_rear_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="wheel_right_rear_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Wheel_right_rear_jt">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_right_rear_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Transmission cho khớp Link_1 -->
+  <transmission name="link_1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Link_1_jt">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="link_1_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Transmission cho khớp Link_2 -->
+  <transmission name="link_2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Link_2_jt">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="link_2_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+        <gazebo>
+            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <robotNamespace>/agv6</robotNamespace>
+            </plugin>
+        </gazebo>
+
+  <!-- <gazebo>
+      <plugin name="zm_robot_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
+        <LeftRear>Wheel_left_rear_jt</LeftRear>
+        <LeftFront>Wheel_left_front_jt</LeftFront>
+        <RightFront>Wheel_right_front_jt</RightFront>
+        <RightRear>Wheel_right_rear_jt</RightRear>
+        <odometryRate>20</odometryRate>      
+        <publishWheelTF>false</publishWheelTF>
+        <publishWheelJointState>true</publishWheelJointState>
+        <WheelTorque>30</WheelTorque>
+        <WheelSeparationW>0.15</WheelSeparationW>
+        <WheelSeparationL>0.2</WheelSeparationL>
+        <wheelAccel>5</wheelAccel>
+        <wheelDiameter>0.13</wheelDiameter>
+        <publishOdom>true</publishOdom>
+        <isRollerModel>true</isRollerModel>
+      </plugin>
+  </gazebo> -->
+
 </robot>
