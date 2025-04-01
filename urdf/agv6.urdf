@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="agv6">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0141107725668544 3.029381788755E-07 0.00115012650526233"
+        rpy="0 0 0" />
+      <mass
+        value="0.491708166350257" />
+      <inertia
+        ixx="0.000733239059020109"
+        ixy="-6.66020089403762E-08"
+        ixz="6.36036351146289E-09"
+        iyy="0.00180017607991645"
+        iyz="4.09726280654699E-12"
+        izz="0.00231558679338059" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.984313725490196 1 0.968627450980392 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Wheel_left_front">
+    <inertial>
+      <origin
+        xyz="3.47385543941758E-10 3.9860337253117E-12 -0.0290464516500078"
+        rpy="0 0 0" />
+      <mass
+        value="0.266614887622473" />
+      <inertia
+        ixx="8.05443070625669E-05"
+        ixy="5.5662537194969E-16"
+        ixz="9.71597439900984E-15"
+        iyy="8.05443070646188E-05"
+        iyz="-1.14696826000883E-12"
+        izz="9.31811521324714E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_left_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_left_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel_left_front_jt"
+    type="continuous">
+    <origin
+      xyz="0.107048219071856 0.0760006401560521 -0.0189999999999998"
+      rpy="1.57079632679488 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel_left_front" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Wheel_right_front">
+    <inertial>
+      <origin
+        xyz="3.47385377408305E-10 3.99003052820035E-12 0.0289535483499968"
+        rpy="0 0 0" />
+      <mass
+        value="0.266614887622474" />
+      <inertia
+        ixx="8.05443070626013E-05"
+        ixy="5.64822109780841E-16"
+        ixz="9.73549499639134E-15"
+        iyy="8.05443070646751E-05"
+        iyz="-1.14698972472684E-12"
+        izz="9.31811521325258E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_right_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_right_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel_right_front_jt"
+    type="continuous">
+    <origin
+      xyz="0.10704821907186 -0.0759993598439369 -0.0189999999999996"
+      rpy="1.57079632679476 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel_right_front" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Wheel_right_rear">
+    <inertial>
+      <origin
+        xyz="-3.7903291616459E-12 3.4740943455347E-10 0.02904645164992"
+        rpy="0 0 0" />
+      <mass
+        value="0.266614887621424" />
+      <inertia
+        ixx="8.0544307064606E-05"
+        ixy="-6.43695276729721E-16"
+        ixz="1.14698028788254E-12"
+        iyy="8.05443070625906E-05"
+        iyz="6.93133000309604E-15"
+        izz="9.31811521324745E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_right_rear.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_right_rear.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel_right_rear_jt"
+    type="continuous">
+    <origin
+      xyz="-0.107951409089476 -0.0759993598439437 -0.0189999999999995"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel_right_rear" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="Wheel_left_rear">
+    <inertial>
+      <origin
+        xyz="-3.789094038531E-12 3.47409212508865E-10 -0.0289535483500907"
+        rpy="0 0 0" />
+      <mass
+        value="0.266614887621422" />
+      <inertia
+        ixx="8.05443070645667E-05"
+        ixy="-6.45957913490074E-16"
+        ixz="1.14696455560682E-12"
+        iyy="8.05443070625707E-05"
+        iyz="6.93090674193091E-15"
+        izz="9.31811521324394E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_left_rear.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Wheel_left_rear.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel_left_rear_jt"
+    type="continuous">
+    <origin
+      xyz="-0.107951409089479 0.0760006401560475 -0.0189999999999994"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel_left_rear" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="Lidar">
+    <inertial>
+      <origin
+        xyz="0.00857409192474684 0.0104781429757902 -1.76941794549634E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.146695752131392" />
+      <inertia
+        ixx="6.33135346729767E-05"
+        ixy="2.05151449566312E-05"
+        ixz="7.24755862153932E-19"
+        iyy="0.000124641101682034"
+        iyz="-3.9522345022547E-19"
+        izz="0.000109673997590948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lidar_jt"
+    type="fixed">
+    <origin
+      xyz="0.0417151580666163 0 0.027"
+      rpy="1.5707963267949 -0.0264386679685926 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="0.0115483643711406 -0.000441415122653756 -1.13628385581474E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.107910841950023" />
+      <inertia
+        ixx="7.1257259001727E-05"
+        ixy="2.27664851839744E-08"
+        ixz="1.79225553235741E-08"
+        iyy="7.025503337675E-05"
+        iyz="-1.88600170449567E-10"
+        izz="7.71021079633262E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_jt"
+    type="fixed">
+    <origin
+      xyz="0.151548404991191 0 -0.00299999999999999"
+      rpy="1.5707963267949 -0.0264386679685926 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_1">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 0.0213531049276671 -8.32667268468867E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.014853253631043" />
+      <inertia
+        ixx="3.72476272804096E-06"
+        ixy="-1.52717649052892E-21"
+        ixz="-4.09688182869347E-08"
+        iyy="1.75364740682686E-06"
+        iyz="9.81860977863269E-21"
+        izz="4.25038255857524E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link_1_jt"
+    type="revolute">
+    <origin
+      xyz="-0.077177 0 0.10084"
+      rpy="1.5708 0 0.10723" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.142"
+      upper="3.142"
+      effort="100"
+      velocity="3" />
+  </joint>
+  <link
+    name="Link_2">
+    <inertial>
+      <origin
+        xyz="0.090252079375302 0.00381667181198561 0.00270003489470364"
+        rpy="0 0 0" />
+      <mass
+        value="0.071785788300906" />
+      <inertia
+        ixx="1.16431099951284E-05"
+        ixy="-6.27559044789669E-06"
+        ixz="-1.05003195017347E-05"
+        iyy="0.000368732065022596"
+        iyz="-1.87744522428076E-07"
+        izz="0.000362315327370893" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/Link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link_2_jt"
+    type="revolute">
+    <origin
+      xyz="0 0.035395 0"
+      rpy="3.1416 -0.10723 0" />
+    <parent
+      link="Link_1" />
+    <child
+      link="Link_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.5"
+      upper="2.5"
+      effort="50"
+      velocity="3" />
+  </joint>
+  <link
+    name="gps">
+    <inertial>
+      <origin
+        xyz="-0.00011371080558821 -0.00429992576596126 1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.00526131193736583" />
+      <inertia
+        ixx="4.05054326208938E-07"
+        ixy="7.33496718553491E-09"
+        ixz="-1.13657535488902E-21"
+        iyy="6.82229019701943E-07"
+        iyz="-1.19858039708162E-21"
+        izz="3.36616354249181E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/gps.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv6/meshes/gps.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gps_jt"
+    type="fixed">
+    <origin
+      xyz="-0.131951595008809 0 0.0103"
+      rpy="1.5707963267949 -0.0264386679685926 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="gps" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

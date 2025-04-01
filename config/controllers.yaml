@@ -1,0 +1,30 @@
+robot_agv0:
+  # Add joint_state_controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  # Điều khiển vận tốc cho bánh xe
+  Wheel_left_front_jt_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: Wheel_left_front_jt
+    pid: {p: 10.0, i: 0.1, d: 0.01}
+  Wheel_right_front_jt_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: Wheel_right_front_jt
+    pid: {p: 10.0, i: 0.1, d: 0.01}
+  Wheel_right_rear_jt_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: Wheel_right_rear_jt
+    pid: {p: 10.0, i: 0.1, d: 0.01}
+  Wheel_left_rear_jt_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: Wheel_left_rear_jt
+    pid: {p: 10.0, i: 0.1, d: 0.01}
+# this is a position (trajectory) controller controller. 
+# Because all three joints are controlled at the same time 
+# If you want, you can load controller for each joint separately
+arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - Link_1_jt
+    - Link_2_jt

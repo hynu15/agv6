@@ -1,0 +1,6 @@
+<launch>
+
+  <!-- Start the keyboard teleop node -->
+  <node name="mecanum_teleop_key" pkg="agv6" type="mecanum_teleop_key.py" output="screen">
+  </node>
+</launch> 
