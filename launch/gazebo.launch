@@ -21,8 +21,26 @@
 
 
 
-  <!-- Start robot state publisher -->
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-    <remap from="/joint_states" to="/agv6/joint_states" />
-  </node>
+  <gazebo>
+      <plugin name="zm_robot_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
+        <LeftRear>Wheel_left_rear_jt</LeftRear>
+        <LeftFront>Wheel_left_front_jt</LeftFront>
+        <RightFront>Wheel_right_front_jt</RightFront>
+        <RightRear>Wheel_right_rear_jt</RightRear>
+        <odometryRate>20</odometryRate>      
+        <publishWheelTF>false</publishWheelTF>
+        <publishWheelJointState>true</publishWheelJointState>
+        <WheelTorque>30</WheelTorque>
+        <WheelSeparationW>0.15</WheelSeparationW>
+        <WheelSeparationL>0.2</WheelSeparationL>
+        <wheelAccel>5</wheelAccel>
+        <wheelDiameter>0.13</wheelDiameter>
+        <publishOdom>true</publishOdom>
+        <isRollerModel>true</isRollerModel>
+      </plugin>
+  </gazebo>
 </launch> 
