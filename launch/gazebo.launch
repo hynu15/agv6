@@ -1,20 +1,28 @@
 <launch>
-  <include
-    file="$(find gazebo_ros)/launch/empty_world.launch" />
-  <node
-    name="tf_footprint_base"
-    pkg="tf"
-    type="static_transform_publisher"
-    args="0 0 0 0 0 0 base_link base_footprint 40" />
-  <node
-    name="spawn_model"
-    pkg="gazebo_ros"
-    type="spawn_model"
-    args="-file $(find agv6)/urdf/agv6.urdf -urdf -model agv6"
-    output="screen" />
-  <node
-    name="fake_joint_calibration"
-    pkg="rostopic"
-    type="rostopic"
-    args="pub /calibrated std_msgs/Bool true" />
-</launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find agv6)/urdf/agv6.urdf -urdf -model agv6" output="screen" />
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+
+  <!-- Load the URDF model into the robot_description parameter -->
+  <param name="robot_description" textfile="$(find agv6)/urdf/agv6.urdf" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find agv6)/config/controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+      /agv6/joint_state_controller
+      /agv6/Wheel_left_front_jt_controller
+      /agv6/Wheel_right_front_jt_controller
+      /agv6/Wheel_right_rear_jt_controller
+      /agv6/Wheel_left_rear_jt_controller
+    "/>
+
+
+
+  <!-- Start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <remap from="/joint_states" to="/agv6/joint_states" />
+  </node>
+</launch> 
