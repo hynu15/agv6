@@ -595,7 +595,7 @@
     <!-- Add Gazebo plugin for Lidar -->
     <gazebo reference="Lidar">
         <sensor name="laser" type="ray">
-            <pose>0 0 0 1.5708 0 0</pose>
+            <pose>0 0.03 0 1.5708 0 0</pose>
             <ray>
                 <scan>
                     <horizontal>
